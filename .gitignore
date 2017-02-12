@@ -14,6 +14,13 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
+# Object files
+PokerTraining/obj/
+PokerTrainTesting/obj/
+*.obj
+*.dll
+*.cache
+
 # Windows shortcuts
 *.lnk
 
