@@ -16,7 +16,9 @@ $RECYCLE.BIN/
 
 # Object files
 PokerTraining/obj/
+PokerTraining/bin/
 PokerTrainTesting/obj/
+PokerTrainTesting/bin/
 *.obj
 *.dll
 *.cache
