@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="PokerTraining.WebForm1" %>
 
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="ajaxToolkit" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -66,12 +68,8 @@
     --%>
         <br />
     </div>
-    <script type="text/javascript">
-  function CallBtn_Click(){
-    // put your code here 
-      alert("hello world");
-  }
-</script>
+        <script type="text/javascript" src="Scripts/DefaultBehavior.js"></script>
+
 <%--        <asp:ScriptManager runat="server" ID="scriptManager1" EnablePageMethods="true">
         <Scripts>
             <asp:ScriptReference Path="~/DefaultBehavior.js" />

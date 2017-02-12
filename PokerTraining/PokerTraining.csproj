@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -38,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit">
+      <HintPath>..\..\..\ASP.NET AJAX Control Toolkit\Bin\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -57,6 +61,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\DefaultBehavior.js" />
     <Content Include="Images\1.png" />
     <Content Include="Images\10.png" />
     <Content Include="Images\11.png" />
@@ -123,6 +128,7 @@
     <Content Include="Images\b2pl.png" />
     <Content Include="Images\b2pr.png" />
     <Content Include="Images\b2pt.png" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
   </ItemGroup>
