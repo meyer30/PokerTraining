@@ -481,9 +481,33 @@ namespace PokerTraining
             return cardLis;
         }
 
-        public Outcome Compare(Hand strtFlushH1)
+        /// <summary>
+        /// Returns whether this hand will win/lose/tie w/ competitor's hand
+        /// </summary>
+        /// <param name="opponentHand"></param>
+        /// <returns></returns>
+        public Outcome Compare(Hand oppHand)
         {
-            throw new NotImplementedException();
+            if (this.Category > oppHand.Category)
+            {
+                return Outcome.Win;
+            }
+            else if (this.Category < oppHand.Category)
+            {
+                return Outcome.Lose;
+            }
+            else if (this.Rank > oppHand.Rank)
+            {
+                return Outcome.Win;
+            }
+            else if (this.Rank < oppHand.Rank)
+            {
+                return Outcome.Lose;
+            }
+            else
+            {
+                return Outcome.Tie;
+            }
         }
         #endregion
     };
