@@ -91,27 +91,33 @@ namespace PokerTraining
         #endregion
 
         #region Public Functions
-        public int Beats(Hand oppHand)
+
+        /// <summary>
+        /// Returns whether this hand will win/lose/tie w/ competitor's hand
+        /// </summary>
+        /// <param name="opponentHand"></param>
+        /// <returns></returns>
+        public Outcome FindOutcome(Hand oppHand)
         {
             if (this.Category > oppHand.Category)
             {
-                return 1;
+                return Outcome.Win;
             }
             else if (this.Category < oppHand.Category)
             {
-                return -1;
+                return Outcome.Lose;
             }
             else if (this.Rank > oppHand.Rank)
             {
-                return 1;
+                return Outcome.Win;
             }
             else if (this.Rank < oppHand.Rank)
             {
-                return -1;
+                return Outcome.Lose;
             }
             else
             {
-                return 0;
+                return Outcome.Tie;
             }
         }
         #endregion
@@ -481,34 +487,6 @@ namespace PokerTraining
             return cardLis;
         }
 
-        /// <summary>
-        /// Returns whether this hand will win/lose/tie w/ competitor's hand
-        /// </summary>
-        /// <param name="opponentHand"></param>
-        /// <returns></returns>
-        public Outcome Compare(Hand oppHand)
-        {
-            if (this.Category > oppHand.Category)
-            {
-                return Outcome.Win;
-            }
-            else if (this.Category < oppHand.Category)
-            {
-                return Outcome.Lose;
-            }
-            else if (this.Rank > oppHand.Rank)
-            {
-                return Outcome.Win;
-            }
-            else if (this.Rank < oppHand.Rank)
-            {
-                return Outcome.Lose;
-            }
-            else
-            {
-                return Outcome.Tie;
-            }
-        }
         #endregion
     };
 };

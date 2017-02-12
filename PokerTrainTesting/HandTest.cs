@@ -349,20 +349,20 @@ namespace PokerTrainTesting
         }
 
         [TestMethod]
-        public void Compare_StraightFlush()
+        public void FindOutcome_StraightFlush()
         {
             Assert.IsTrue(strtFlushH1.Rank > strtFlushH2.Rank);
             Assert.IsTrue(strtFlushH2.Rank > strtFlushH3.Rank);
 
-            Assert.AreEqual(strtFlushH1.Compare(strtFlushH1), Outcome.Tie);
-            Assert.AreEqual(strtFlushH1.Compare(fourKindH1), Outcome.Win);
-            Assert.AreEqual(strtFlushH1.Compare(flushH1), Outcome.Win);
-            Assert.AreEqual(strtFlushH1.Compare(strtH1), Outcome.Win);
-            Assert.AreEqual(strtFlushH1.Compare(threeH1), Outcome.Win);
-            Assert.AreEqual(strtFlushH1.Compare(twoPH1), Outcome.Win);
-            Assert.AreEqual(strtFlushH1.Compare(onePH1), Outcome.Win);
-            Assert.AreEqual(strtFlushH1.Compare(strtFlushH2), Outcome.Win);
-            Assert.AreEqual(strtFlushH2.Compare(strtFlushH3), Outcome.Win);
+            Assert.AreEqual(strtFlushH1.FindOutcome(strtFlushH1), Outcome.Tie);
+            Assert.AreEqual(strtFlushH1.FindOutcome(fourKindH1), Outcome.Win);
+            Assert.AreEqual(strtFlushH1.FindOutcome(flushH1), Outcome.Win);
+            Assert.AreEqual(strtFlushH1.FindOutcome(strtH1), Outcome.Win);
+            Assert.AreEqual(strtFlushH1.FindOutcome(threeH1), Outcome.Win);
+            Assert.AreEqual(strtFlushH1.FindOutcome(twoPH1), Outcome.Win);
+            Assert.AreEqual(strtFlushH1.FindOutcome(onePH1), Outcome.Win);
+            Assert.AreEqual(strtFlushH1.FindOutcome(strtFlushH2), Outcome.Win);
+            Assert.AreEqual(strtFlushH2.FindOutcome(strtFlushH3), Outcome.Win);
         }
 
         [TestMethod]
@@ -374,20 +374,20 @@ namespace PokerTrainTesting
         }
 
         [TestMethod]
-        public void Compare_FourOfKind()
+        public void FindOutcome_FourOfKind()
         {
             Assert.IsTrue(fourKindH1.Rank > fourKindH2.Rank);
             Assert.IsTrue(fourKindH2.Rank > fourKindH3.Rank);
 
-            Assert.AreEqual(fourKindH1.Compare(strtFlushH1), Outcome.Lose);
-            Assert.AreEqual(fourKindH1.Compare(fourKindH1), Outcome.Tie);
-            Assert.AreEqual(fourKindH1.Compare(flushH1), Outcome.Win);
-            Assert.AreEqual(fourKindH1.Compare(strtH1), Outcome.Win);
-            Assert.AreEqual(fourKindH1.Compare(threeH1), Outcome.Win);
-            Assert.AreEqual(fourKindH1.Compare(twoPH1), Outcome.Win);
-            Assert.AreEqual(fourKindH1.Compare(onePH1), Outcome.Win);
-            Assert.AreEqual(fourKindH1.Compare(fourKindH2), Outcome.Win);
-            Assert.AreEqual(fourKindH2.Compare(fourKindH3), Outcome.Win);
+            Assert.AreEqual(fourKindH1.FindOutcome(strtFlushH1), Outcome.Lose);
+            Assert.AreEqual(fourKindH1.FindOutcome(fourKindH1), Outcome.Tie);
+            Assert.AreEqual(fourKindH1.FindOutcome(flushH1), Outcome.Win);
+            Assert.AreEqual(fourKindH1.FindOutcome(strtH1), Outcome.Win);
+            Assert.AreEqual(fourKindH1.FindOutcome(threeH1), Outcome.Win);
+            Assert.AreEqual(fourKindH1.FindOutcome(twoPH1), Outcome.Win);
+            Assert.AreEqual(fourKindH1.FindOutcome(onePH1), Outcome.Win);
+            Assert.AreEqual(fourKindH1.FindOutcome(fourKindH2), Outcome.Win);
+            Assert.AreEqual(fourKindH2.FindOutcome(fourKindH3), Outcome.Win);
         }
 
 
@@ -401,22 +401,22 @@ namespace PokerTrainTesting
 
 
         [TestMethod]
-        public void Compare_FullHouse()
+        public void FindOutcome_FullHouse()
         {
             Assert.IsTrue(fullH1.Rank > fullH2.Rank);
             Assert.IsTrue(fullH2.Rank > fullH3.Rank);
 
-            Assert.AreEqual(fullH1.Compare(strtFlushH1), Outcome.Lose);
+            Assert.AreEqual(fullH1.FindOutcome(strtFlushH1), Outcome.Lose);
             
-            Assert.AreEqual(fullH1.Compare(fourKindH1), Outcome.Lose);
-            Assert.AreEqual(fullH1.Compare(fullH1), Outcome.Tie);
-            Assert.AreEqual(fullH1.Compare(flushH1), Outcome.Win);
-            Assert.AreEqual(fullH1.Compare(strtH1), Outcome.Win);
-            Assert.AreEqual(fullH1.Compare(threeH1), Outcome.Win);
-            Assert.AreEqual(fullH1.Compare(twoPH1), Outcome.Win);
-            Assert.AreEqual(fullH1.Compare(onePH1), Outcome.Win);
-            Assert.AreEqual(fullH1.Compare(fullH2), Outcome.Win);
-            Assert.AreEqual(fullH2.Compare(fullH3), Outcome.Win);
+            Assert.AreEqual(fullH1.FindOutcome(fourKindH1), Outcome.Lose);
+            Assert.AreEqual(fullH1.FindOutcome(fullH1), Outcome.Tie);
+            Assert.AreEqual(fullH1.FindOutcome(flushH1), Outcome.Win);
+            Assert.AreEqual(fullH1.FindOutcome(strtH1), Outcome.Win);
+            Assert.AreEqual(fullH1.FindOutcome(threeH1), Outcome.Win);
+            Assert.AreEqual(fullH1.FindOutcome(twoPH1), Outcome.Win);
+            Assert.AreEqual(fullH1.FindOutcome(onePH1), Outcome.Win);
+            Assert.AreEqual(fullH1.FindOutcome(fullH2), Outcome.Win);
+            Assert.AreEqual(fullH2.FindOutcome(fullH3), Outcome.Win);
         }
 
         [TestMethod]
@@ -429,20 +429,20 @@ namespace PokerTrainTesting
 
 
         [TestMethod]
-        public void Compare_Flush()
+        public void FindOutcome_Flush()
         {
             Assert.IsTrue(flushH1.Rank > flushH2.Rank);
             Assert.IsTrue(flushH2.Rank > flushH3.Rank);
 
-            Assert.AreEqual(flushH1.Compare(strtFlushH1), Outcome.Lose);
-            Assert.AreEqual(flushH1.Compare(fourKindH1), Outcome.Lose);
-            Assert.AreEqual(flushH1.Compare(flushH1), Outcome.Tie);
-            Assert.AreEqual(flushH1.Compare(strtH1), Outcome.Win);
-            Assert.AreEqual(flushH1.Compare(threeH1), Outcome.Win);
-            Assert.AreEqual(flushH1.Compare(twoPH1), Outcome.Win);
-            Assert.AreEqual(flushH1.Compare(onePH1), Outcome.Win);
-            Assert.AreEqual(flushH1.Compare(flushH2), Outcome.Win);
-            Assert.AreEqual(flushH2.Compare(flushH3), Outcome.Win);
+            Assert.AreEqual(flushH1.FindOutcome(strtFlushH1), Outcome.Lose);
+            Assert.AreEqual(flushH1.FindOutcome(fourKindH1), Outcome.Lose);
+            Assert.AreEqual(flushH1.FindOutcome(flushH1), Outcome.Tie);
+            Assert.AreEqual(flushH1.FindOutcome(strtH1), Outcome.Win);
+            Assert.AreEqual(flushH1.FindOutcome(threeH1), Outcome.Win);
+            Assert.AreEqual(flushH1.FindOutcome(twoPH1), Outcome.Win);
+            Assert.AreEqual(flushH1.FindOutcome(onePH1), Outcome.Win);
+            Assert.AreEqual(flushH1.FindOutcome(flushH2), Outcome.Win);
+            Assert.AreEqual(flushH2.FindOutcome(flushH3), Outcome.Win);
         }
 
         [TestMethod]
@@ -454,20 +454,20 @@ namespace PokerTrainTesting
         }
 
         [TestMethod]
-        public void Compare_Straight()
+        public void FindOutcome_Straight()
         {
             Assert.IsTrue(strtH1.Rank > strtH2.Rank);
             Assert.IsTrue(strtH2.Rank > strtH3.Rank);
 
-            Assert.AreEqual(strtH1.Compare(strtFlushH1), Outcome.Lose);
-            Assert.AreEqual(strtH1.Compare(fourKindH1), Outcome.Lose);
-            Assert.AreEqual(strtH1.Compare(flushH1), Outcome.Lose);
-            Assert.AreEqual(strtH1.Compare(strtH1), Outcome.Tie);
-            Assert.AreEqual(strtH1.Compare(threeH1), Outcome.Win);
-            Assert.AreEqual(strtH1.Compare(twoPH1), Outcome.Win);
-            Assert.AreEqual(strtH1.Compare(onePH1), Outcome.Win);
-            Assert.AreEqual(strtH1.Compare(strtH2), Outcome.Win);
-            Assert.AreEqual(strtH2.Compare(strtH3), Outcome.Win);
+            Assert.AreEqual(strtH1.FindOutcome(strtFlushH1), Outcome.Lose);
+            Assert.AreEqual(strtH1.FindOutcome(fourKindH1), Outcome.Lose);
+            Assert.AreEqual(strtH1.FindOutcome(flushH1), Outcome.Lose);
+            Assert.AreEqual(strtH1.FindOutcome(strtH1), Outcome.Tie);
+            Assert.AreEqual(strtH1.FindOutcome(threeH1), Outcome.Win);
+            Assert.AreEqual(strtH1.FindOutcome(twoPH1), Outcome.Win);
+            Assert.AreEqual(strtH1.FindOutcome(onePH1), Outcome.Win);
+            Assert.AreEqual(strtH1.FindOutcome(strtH2), Outcome.Win);
+            Assert.AreEqual(strtH2.FindOutcome(strtH3), Outcome.Win);
         }
 
         [TestMethod]
@@ -479,21 +479,21 @@ namespace PokerTrainTesting
         }
 
         [TestMethod]
-        public void Compare_ThreeOfKind()
+        public void FindOutcome_ThreeOfKind()
         {
             Assert.IsTrue(threeH1.Rank > threeH2.Rank);
             Assert.IsTrue(threeH2.Rank > threeH3.Rank);
 
-            Assert.AreEqual(threeH1.Compare(strtFlushH1), Outcome.Lose);
-            Assert.AreEqual(threeH1.Compare(fourKindH1), Outcome.Lose);
-            Assert.AreEqual(threeH1.Compare(flushH1), Outcome.Lose);
-            Assert.AreEqual(threeH1.Compare(strtH1), Outcome.Lose);
-            Assert.AreEqual(threeH1.Compare(threeH1), Outcome.Tie);
-            Assert.AreEqual(threeH1.Compare(twoPH1), Outcome.Win);
-            Assert.AreEqual(threeH1.Compare(onePH1), Outcome.Win);
-            Assert.AreEqual(threeH1.Compare(highH1), Outcome.Win);
-            Assert.AreEqual(threeH1.Compare(threeH2), Outcome.Win);
-            Assert.AreEqual(threeH2.Compare(threeH3), Outcome.Win);
+            Assert.AreEqual(threeH1.FindOutcome(strtFlushH1), Outcome.Lose);
+            Assert.AreEqual(threeH1.FindOutcome(fourKindH1), Outcome.Lose);
+            Assert.AreEqual(threeH1.FindOutcome(flushH1), Outcome.Lose);
+            Assert.AreEqual(threeH1.FindOutcome(strtH1), Outcome.Lose);
+            Assert.AreEqual(threeH1.FindOutcome(threeH1), Outcome.Tie);
+            Assert.AreEqual(threeH1.FindOutcome(twoPH1), Outcome.Win);
+            Assert.AreEqual(threeH1.FindOutcome(onePH1), Outcome.Win);
+            Assert.AreEqual(threeH1.FindOutcome(highH1), Outcome.Win);
+            Assert.AreEqual(threeH1.FindOutcome(threeH2), Outcome.Win);
+            Assert.AreEqual(threeH2.FindOutcome(threeH3), Outcome.Win);
         }
 
         [TestMethod]
@@ -506,21 +506,21 @@ namespace PokerTrainTesting
 
 
         [TestMethod]
-        public void Compare_TwoPair()
+        public void FindOutcome_TwoPair()
         {
             Assert.IsTrue(twoPH1.Rank > twoPH2.Rank);
             Assert.IsTrue(twoPH2.Rank > twoPH3.Rank);
 
-            Assert.AreEqual(twoPH1.Compare(strtFlushH1), Outcome.Lose);
-            Assert.AreEqual(twoPH1.Compare(fourKindH1), Outcome.Lose);
-            Assert.AreEqual(twoPH1.Compare(flushH1), Outcome.Lose);
-            Assert.AreEqual(twoPH1.Compare(strtH1), Outcome.Lose);
-            Assert.AreEqual(twoPH1.Compare(threeH1), Outcome.Lose);
-            Assert.AreEqual(twoPH1.Compare(onePH1), Outcome.Win);
-            Assert.AreEqual(twoPH1.Compare(twoPH2), Outcome.Win);
-            Assert.AreEqual(twoPH2.Compare(twoPH3), Outcome.Win);
-            Assert.AreEqual(twoPH1.Compare(onePH1), Outcome.Win);
-            Assert.AreEqual(twoPH1.Compare(highH1), Outcome.Win);
+            Assert.AreEqual(twoPH1.FindOutcome(strtFlushH1), Outcome.Lose);
+            Assert.AreEqual(twoPH1.FindOutcome(fourKindH1), Outcome.Lose);
+            Assert.AreEqual(twoPH1.FindOutcome(flushH1), Outcome.Lose);
+            Assert.AreEqual(twoPH1.FindOutcome(strtH1), Outcome.Lose);
+            Assert.AreEqual(twoPH1.FindOutcome(threeH1), Outcome.Lose);
+            Assert.AreEqual(twoPH1.FindOutcome(onePH1), Outcome.Win);
+            Assert.AreEqual(twoPH1.FindOutcome(twoPH2), Outcome.Win);
+            Assert.AreEqual(twoPH2.FindOutcome(twoPH3), Outcome.Win);
+            Assert.AreEqual(twoPH1.FindOutcome(onePH1), Outcome.Win);
+            Assert.AreEqual(twoPH1.FindOutcome(highH1), Outcome.Win);
         }
 
         [TestMethod]
@@ -533,20 +533,20 @@ namespace PokerTrainTesting
 
 
         [TestMethod]
-        public void Compare_Pair()
+        public void FindOutcome_Pair()
         {
             Assert.IsTrue(onePH1.Rank > onePH2.Rank);
             Assert.IsTrue(onePH2.Rank > onePH3.Rank);
             
-            Assert.AreEqual(onePH1.Compare(strtFlushH1), Outcome.Lose);
-            Assert.AreEqual(onePH1.Compare(fourKindH1), Outcome.Lose);
-            Assert.AreEqual(onePH1.Compare(flushH1), Outcome.Lose);
-            Assert.AreEqual(onePH1.Compare(strtH1), Outcome.Lose);
-            Assert.AreEqual(onePH1.Compare(threeH1), Outcome.Lose);
-            Assert.AreEqual(onePH1.Compare(twoPH1), Outcome.Lose);
-            Assert.AreEqual(onePH1.Compare(onePH2), Outcome.Win);
-            Assert.AreEqual(onePH2.Compare(onePH3), Outcome.Win);
-            Assert.AreEqual(onePH1.Compare(highH1), Outcome.Win);
+            Assert.AreEqual(onePH1.FindOutcome(strtFlushH1), Outcome.Lose);
+            Assert.AreEqual(onePH1.FindOutcome(fourKindH1), Outcome.Lose);
+            Assert.AreEqual(onePH1.FindOutcome(flushH1), Outcome.Lose);
+            Assert.AreEqual(onePH1.FindOutcome(strtH1), Outcome.Lose);
+            Assert.AreEqual(onePH1.FindOutcome(threeH1), Outcome.Lose);
+            Assert.AreEqual(onePH1.FindOutcome(twoPH1), Outcome.Lose);
+            Assert.AreEqual(onePH1.FindOutcome(onePH2), Outcome.Win);
+            Assert.AreEqual(onePH2.FindOutcome(onePH3), Outcome.Win);
+            Assert.AreEqual(onePH1.FindOutcome(highH1), Outcome.Win);
         }
 
         [TestMethod]
@@ -559,17 +559,17 @@ namespace PokerTrainTesting
 
 
         [TestMethod]
-        public void Compare_HighCard()
+        public void FindOutcome_HighCard()
         {
-            Assert.AreEqual(highH1.Compare(strtFlushH1), Outcome.Lose);
-            Assert.AreEqual(highH1.Compare(fourKindH1), Outcome.Lose);
-            Assert.AreEqual(highH1.Compare(flushH1), Outcome.Lose);
-            Assert.AreEqual(highH1.Compare(strtH1), Outcome.Lose);
-            Assert.AreEqual(highH1.Compare(threeH1), Outcome.Lose);
-            Assert.AreEqual(highH1.Compare(twoPH1), Outcome.Lose);
-            Assert.AreEqual(highH1.Compare(onePH1), Outcome.Lose);
-            Assert.AreEqual(highH1.Compare(highH2), Outcome.Win);
-            Assert.AreEqual(highH2.Compare(highH3), Outcome.Win);
+            Assert.AreEqual(highH1.FindOutcome(strtFlushH1), Outcome.Lose);
+            Assert.AreEqual(highH1.FindOutcome(fourKindH1), Outcome.Lose);
+            Assert.AreEqual(highH1.FindOutcome(flushH1), Outcome.Lose);
+            Assert.AreEqual(highH1.FindOutcome(strtH1), Outcome.Lose);
+            Assert.AreEqual(highH1.FindOutcome(threeH1), Outcome.Lose);
+            Assert.AreEqual(highH1.FindOutcome(twoPH1), Outcome.Lose);
+            Assert.AreEqual(highH1.FindOutcome(onePH1), Outcome.Lose);
+            Assert.AreEqual(highH1.FindOutcome(highH2), Outcome.Win);
+            Assert.AreEqual(highH2.FindOutcome(highH3), Outcome.Win);
         }
         #endregion
     };

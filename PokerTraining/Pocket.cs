@@ -124,8 +124,8 @@ namespace PokerTraining
 
             if (commCards.Count == 5)
             {
-                if (this.Beats(oppCards, commCards) > -1)
-                {
+                if (!this.FindOutcome(oppCards,commCards).Equals(Outcome.Lose))
+                { 
                     numChancesShouldPlay = 1;
                 }
                 numPosDeals = 1;
@@ -150,25 +150,22 @@ namespace PokerTraining
             return numChancesShouldPlay;
         }
 
-
-
+                
         /// <summary>
-        /// Returns whether the Hand beats oppHand given the middle
+        /// Returns the outcome of this pocket playing against the opponents pocket
         /// </summary>
-        /// <returns>
-        /// 1  - you win
-        /// 0  - you tie
-        /// -1 - you lose
-        /// </returns>
-        private int Beats(Pocket oppCards, Community commCards)
+        /// <param name="oppCards"></param>
+        /// <param name="commCards"></param>
+        /// <returns></returns>
+        private Outcome FindOutcome(Pocket oppCards, Community commCards)
         {
             Hand myHand = new Hand(this, commCards);
             Hand oppHand = new Hand(oppCards, commCards);
-
-            return myHand.Beats(oppHand);
+            
+            return myHand.FindOutcome(oppHand);
         }
 
-        
+
         private bool Contains(List<Card> unavailbCards)
         {
             foreach (Card c in unavailbCards)
