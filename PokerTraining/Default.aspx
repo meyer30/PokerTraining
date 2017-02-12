@@ -53,7 +53,7 @@
         <br />
         <br />
         <asp:Button ID="btnDeal" runat="server" Text="Deal" OnClick="btn_Click" />
-        <asp:Button ID="btnCall" runat="server" Text="Call" OnClick="btn_Click" />
+        <asp:Button ID="btnCall" runat="server" Text="Call" OnClientClick="CallBtn_Click()" />
         <asp:Button ID="btnFold" runat="server" Text="Fold" OnClick="btn_Click" />
         <br />
         <br />
@@ -66,6 +66,17 @@
     --%>
         <br />
     </div>
+    <script type="text/javascript">
+  function CallBtn_Click(){
+    // put your code here 
+      alert("hello world");
+  }
+</script>
+<%--        <asp:ScriptManager runat="server" ID="scriptManager1" EnablePageMethods="true">
+        <Scripts>
+            <asp:ScriptReference Path="~/DefaultBehavior.js" />
+        </Scripts>
+</asp:ScriptManager>--%>
     </form>
 </body>
 </html>
