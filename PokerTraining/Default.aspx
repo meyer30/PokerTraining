@@ -14,7 +14,15 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            POKER APP<br />
+            POKER APP<asp:ScriptManager runat="server" ID="scriptManager1" EnablePageMethods="true">
+            <Scripts>
+                <%--            <asp:ScriptReference Path="~/DefaultBehavior.js" />--%>
+            </Scripts>
+            <Services>
+                <asp:ServiceReference Path="~/WebService1.asmx" />
+            </Services>
+        </asp:ScriptManager>
+            <br />
             <br />
             <br />
             <asp:Table ID="TablePocket" runat="server" BorderStyle="Solid" CellPadding="0" CellSpacing="1" GridLines="Both" Width="285px">
@@ -47,6 +55,8 @@
             </asp:Table>
 
             <br />
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            </asp:UpdatePanel>
             <br />
 
             <asp:DropDownList ID="ddlNumCommCards" runat="server">
@@ -71,11 +81,6 @@
             <br />
         </div>
 
-        <asp:ScriptManager runat="server" ID="scriptManager1" EnablePageMethods="true">
-            <Scripts>
-                <%--            <asp:ScriptReference Path="~/DefaultBehavior.js" />--%>
-            </Scripts>
-        </asp:ScriptManager>
         <%--    <asp:scriptmanager enablepagemethods="true" id="scpt" runat="server"> </asp:scriptmanager>--%>
     </form>
 </body>
