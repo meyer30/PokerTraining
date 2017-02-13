@@ -61,7 +61,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\DefaultBehavior.js" />
+    <Content Include="DefaultBehavior.js" />
     <Content Include="Images\1.png" />
     <Content Include="Images\10.png" />
     <Content Include="Images\11.png" />
@@ -128,7 +128,7 @@
     <Content Include="Images\b2pl.png" />
     <Content Include="Images\b2pr.png" />
     <Content Include="Images\b2pt.png" />
-    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="jquery-3.1.1.js" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
   </ItemGroup>
@@ -155,6 +155,9 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Services;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -26,7 +28,16 @@ namespace PokerTraining
             //    this.TableCommunity.Rows.Add(tr);
             //}
         }
-        
+
+        [WebMethod]
+        [ScriptMethod]
+        public static string MyWebService(String Data)
+        {
+            // code logic here
+
+            return "result";
+        }
+
         #region Event Handlers
         protected void btn_Click(object sender, EventArgs e)
         {
