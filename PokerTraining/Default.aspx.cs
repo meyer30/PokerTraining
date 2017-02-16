@@ -13,20 +13,11 @@ namespace PokerTraining
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //object myCards = Session["myCards"];
-            //if (myCards is Pocket)
-            //{
-            //    Pocket myPocket = (Pocket)myCards;
-            //    TableRow tr = GetTableRow(myPocket.CardList);
-            //    this.TablePocket.Rows.Add(tr);
-            //}
-            //object commCards = Session["commCards"];
-            //if (commCards is Community)
-            //{
-            //    Community comm = (Community)commCards;
-            //    TableRow tr = GetTableRow(comm.CardList);
-            //    this.TableCommunity.Rows.Add(tr);
-            //}
+            if(!this.IsPostBack)
+            {
+                DealCards();
+                BuildView();
+            }
         }
 
         [WebMethod]
@@ -58,20 +49,27 @@ namespace PokerTraining
                     default:
                         break;
                 }
-                int bet = (int)Session["bet"];
-                int potTotal = (int)Session["potTotal"];
-                Pocket p = (Pocket)Session["myCards"];
-                Community c = (Community)Session["commCards"];
-                TableRow tr = GetCardTabRow(p.CardList);
-                this.TablePocket.Rows.Add(tr);
-                tr = GetCardTabRow(c.CardList);
-                while (tr.Cells.Count < 5)
-                {
-                    tr.Cells.Add(GetCardTabCell(null));
-                }
-                this.TableCommunity.Rows.Add(tr);
-                this.TablePotOdds.Rows.Add(GetPotTabRow(bet, potTotal));
+
+                BuildView();
             }
+        }
+
+        private void BuildView()
+        {
+            int bet = (int)Session["bet"];
+            int potTotal = (int)Session["potTotal"];
+            Pocket p = (Pocket)Session["myCards"];
+            Community c = (Community)Session["commCards"];
+            TableRow tr = GetCardTabRow(p.CardList);
+            this.TablePocket.Rows.Add(tr);
+            tr = GetCardTabRow(c.CardList);
+            while (tr.Cells.Count < 5)
+            {
+                tr.Cells.Add(GetCardTabCell(null));
+            }
+            this.TableCommunity.Rows.Add(tr);
+            this.TablePotOdds.Rows.Add(GetPotTabRow(bet, potTotal));
+
         }
 
         protected void DealCards()
