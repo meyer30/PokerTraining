@@ -5,16 +5,19 @@
 
 function CallBtn_Click()
 {
-    //window.alert("hello world ");
-    PageMethods.MyWebService("", OnSuccess, OnFail);
-    //$.ajax({
-    //    type: "GET",
-    //    url: "Default.aspx/MyWebService",
-    //    success: OnSuccess,
-    //    error: OnFail
-    //});
+    //PageMethods.MyWebService("", OnSuccess, OnFail);
+    //WebService1.HelloWorld("", OnSuccess, OnFail);
     
 
+    $.ajax({
+        type: "POST",
+        url: "Default.aspx/MyWebService2",
+        data: "{}",
+        contentType: "application/json; charset=utf-8",
+        success: OnSuccess,
+        error: OnFail,
+        dataType: "text",
+    });
     return false;
 };
 

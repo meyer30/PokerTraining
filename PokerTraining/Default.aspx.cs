@@ -20,14 +20,33 @@ namespace PokerTraining
             }
         }
 
-        [WebMethod]
+
+        [WebMethod(EnableSession =true)]
         [ScriptMethod]
-        public static string MyWebService(String Data)
+        public static string MyWebService2()
         {
             // code logic here
 
-            return "result";
+            
+
+            if ((bool)HttpContext.Current.Session["userShouldCall"])
+            {
+                return "correct";
+            }
+            else
+            {
+                return "false";
+            }
         }
+
+        //[WebMethod(EnableSession =true)]
+        //[ScriptMethod]
+        //public static string MyWebService(String Data)
+        //{
+        //    // code logic here
+
+        //    return "result";
+        //}
 
         #region Event Handlers
         protected void btn_Click(object sender, EventArgs e)
@@ -49,8 +68,35 @@ namespace PokerTraining
                     default:
                         break;
                 }
-
                 BuildView();
+            }
+        }
+
+        protected void DealCards()
+        {
+
+            int numCommCards = int.Parse(this.ddlNumCommCards.SelectedValue);
+
+            Pocket myCards = new Pocket();
+            Community commCards = new Community(myCards.CardList, numCommCards);
+
+            Random randNum = new Random();
+            int potTotal = randNum.Next(1, 10);
+            int currentBet = randNum.Next(1, potTotal);
+
+            double oddsWinning = myCards.GetOddsWin(commCards);
+            double potOdds = (double)currentBet / (double)potTotal;
+            if (Math.Abs(oddsWinning - potOdds) > .15)
+            {
+                DealCards();
+            }
+            else
+            {
+                Session["userShouldCall"] = oddsWinning >= potOdds;
+                Session["myCards"] = myCards;
+                Session["commCards"] = commCards;
+                Session["bet"] = currentBet;
+                Session["potTotal"] = potTotal;
             }
         }
 
@@ -69,35 +115,8 @@ namespace PokerTraining
             }
             this.TableCommunity.Rows.Add(tr);
             this.TablePotOdds.Rows.Add(GetPotTabRow(bet, potTotal));
-
         }
 
-        protected void DealCards()
-        {
-            int numCommCards = int.Parse(this.ddlNumCommCards.SelectedValue);
-
-            Pocket myCards = new Pocket();
-            Community commCards = new Community(myCards.CardList, numCommCards);
-
-            Random randNum = new Random();
-            int potTotal = randNum.Next(1, 10);
-            int currentBet = randNum.Next(1, potTotal);
-
-            double oddsWinning = myCards.GetOddsWin(commCards);
-            double potOdds = (double)currentBet / (double)potTotal;
-            if(Math.Abs(oddsWinning - potOdds)>.15)
-            {
-                DealCards();
-            }
-            else
-            {
-                Session["userShouldCall"] = oddsWinning >= potOdds;
-                Session["myCards"] = myCards;
-                Session["commCards"] = commCards;
-                Session["bet"] = currentBet;
-                Session["potTotal"] = potTotal;
-            }
-        }
 
         protected void btnCall_Click()
         {

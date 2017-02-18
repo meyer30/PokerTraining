@@ -8,20 +8,20 @@
 <head runat="server">
     <title></title>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="DefaultBehavior.js"></script>
-
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-            POKER APP<asp:ScriptManager runat="server" ID="scriptManager1" EnablePageMethods="true">
-            <Scripts>
-                <%--            <asp:ScriptReference Path="~/DefaultBehavior.js" />--%>
-            </Scripts>
-            <Services>
-                <asp:ServiceReference Path="~/WebService1.asmx" />
-            </Services>
-        </asp:ScriptManager>
+            POKER APP
+            <%--    <asp:scriptmanager enablepagemethods="true" id="scpt" runat="server"> </asp:scriptmanager>--%>
+            <asp:ScriptManager runat="server" ID="scriptManager1" EnablePageMethods="true">
+                <Scripts>
+                    <asp:ScriptReference Path="~/DefaultBehavior.js" />
+                </Scripts>
+                <Services>
+                    <asp:ServiceReference Path="~/WebService1.asmx" />
+                </Services>
+            </asp:ScriptManager>
             <br />
             <br />
             <br />
@@ -71,17 +71,14 @@
             <asp:Button ID="btnFold" runat="server" Text="Fold" OnClick="btn_Click" />
             <br />
             <br />
-            <%--        <asp:Table ID="TableResults" runat="server" BorderStyle="Solid" CellPadding="0" CellSpacing="1" GridLines="Both" Width="287px">
-            <asp:TableRow>
-                <asp:TableCell>Pot Odds</asp:TableCell>
-                <asp:TableCell>Percent Win</asp:TableCell>
-            </asp:TableRow>
-        </asp:Table>
-            --%>
+            <%--            <asp:Table ID="TableResults" runat="server" BorderStyle="Solid" CellPadding="0" CellSpacing="1" GridLines="Both" Width="287px">
+                    <asp:TableRow>
+                        <asp:TableCell>Pot Odds</asp:TableCell>
+                        <asp:TableCell>Percent Win</asp:TableCell>
+                    </asp:TableRow>
+                </asp:Table>--%>
             <br />
         </div>
-
-        <%--    <asp:scriptmanager enablepagemethods="true" id="scpt" runat="server"> </asp:scriptmanager>--%>
     </form>
 </body>
 </html>
