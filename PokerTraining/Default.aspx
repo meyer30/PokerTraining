@@ -18,9 +18,6 @@
                 <Scripts>
                     <asp:ScriptReference Path="~/DefaultBehavior.js" />
                 </Scripts>
-                <Services>
-                    <asp:ServiceReference Path="~/WebService1.asmx" />
-                </Services>
             </asp:ScriptManager>
             <br />
             <br />
