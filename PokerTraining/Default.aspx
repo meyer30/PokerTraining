@@ -27,8 +27,7 @@
             <br />
             <asp:Table ID="TablePocket" runat="server" BorderStyle="Solid" CellPadding="0" CellSpacing="1" GridLines="Both" Width="285px">
                 <asp:TableRow>
-                    <asp:TableCell>Pocket Card 1</asp:TableCell>
-                    <asp:TableCell>Pocket Card 2</asp:TableCell>
+                    <asp:TableCell ColumnSpan="2">Pocket</asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
 
@@ -36,9 +35,7 @@
             <br />
             <asp:Table ID="TableCommunity" runat="server" BorderStyle="Solid" CellPadding="0" CellSpacing="1" GridLines="Both" Width="649px">
                 <asp:TableRow>
-                    <asp:TableCell>Flop 1</asp:TableCell>
-                    <asp:TableCell>Flop 2</asp:TableCell>
-                    <asp:TableCell>Flop 3</asp:TableCell>
+                    <asp:TableCell ColumnSpan="3">Flop</asp:TableCell>
                     <asp:TableCell>Turn</asp:TableCell>
                     <asp:TableCell>River</asp:TableCell>
                 </asp:TableRow>

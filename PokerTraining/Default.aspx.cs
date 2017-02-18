@@ -23,30 +23,18 @@ namespace PokerTraining
 
         [WebMethod(EnableSession =true)]
         [ScriptMethod]
-        public static string MyWebService2()
+        public static Boolean ShouldUserCall()
         {
-            // code logic here
-
-            
-
-            if ((bool)HttpContext.Current.Session["userShouldCall"])
-            {
-                return "correct";
-            }
-            else
-            {
-                return "false";
-            }
+            return (bool)HttpContext.Current.Session["userShouldCall"];
         }
 
-        //[WebMethod(EnableSession =true)]
-        //[ScriptMethod]
-        //public static string MyWebService(String Data)
-        //{
-        //    // code logic here
 
-        //    return "result";
-        //}
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod]
+        public static Double GetOddsWinning()
+        {
+            return (double)HttpContext.Current.Session["oddsWinning"];
+        }
 
         #region Event Handlers
         protected void btn_Click(object sender, EventArgs e)
@@ -93,6 +81,7 @@ namespace PokerTraining
             else
             {
                 Session["userShouldCall"] = oddsWinning >= potOdds;
+                Session["oddsWinning"] = oddsWinning;
                 Session["myCards"] = myCards;
                 Session["commCards"] = commCards;
                 Session["bet"] = currentBet;

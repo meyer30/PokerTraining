@@ -11,7 +11,7 @@ function CallBtn_Click()
 
     $.ajax({
         type: "POST",
-        url: "Default.aspx/MyWebService2",
+        url: "Default.aspx/ShouldUserCall",
         data: "{}",
         contentType: "application/json; charset=utf-8",
         success: OnSuccess,
