@@ -7,13 +7,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link href="MainStyleSheet.css" rel="stylesheet" />
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-            POKER APP
-            <%--    <asp:scriptmanager enablepagemethods="true" id="scpt" runat="server"> </asp:scriptmanager>--%>
+            <h1>POKER APP</h1>
             <asp:ScriptManager runat="server" ID="scriptManager1" EnablePageMethods="true">
                 <Scripts>
                     <asp:ScriptReference Path="~/DefaultBehavior.js" />

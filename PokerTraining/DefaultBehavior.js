@@ -21,6 +21,21 @@ function CallBtn_Click()
     return false;
 };
 
+function FoldBtn_Click() {
+    
+    //$.ajax({
+    //    type: "POST",
+    //    url: "Default.aspx/ShouldUserCall",
+    //    data: "{}",
+    //    contentType: "application/json; charset=utf-8",
+    //    success: OnSuccess,
+    //    error: OnFail,
+    //    dataType: "text",
+    //});
+    return false;
+};
+
+
 function OnSuccess(result) {
     window.alert(JSON.stringify(result));
 }

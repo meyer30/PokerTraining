@@ -23,10 +23,43 @@ namespace PokerTraining
 
         [WebMethod(EnableSession =true)]
         [ScriptMethod]
-        public static Boolean ShouldUserCall()
+        public static Boolean UserCalled()
         {
             return (bool)HttpContext.Current.Session["userShouldCall"];
         }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod]
+        public static UserDecision UserFolded()
+        {
+            return null;
+            //return !(bool)HttpContext.Current.Session["userShouldCall"];
+        }
+
+        protected void btnCall_Click()
+        {
+            if ((bool)Session["userShouldCall"])
+            {
+                UserRight();
+            }
+            else
+            {
+                UserWrong();
+            }
+        }
+
+        protected void btnFold_Click()
+        {
+            if ((bool)Session["userShouldCall"])
+            {
+                UserWrong();
+            }
+            else
+            {
+                UserRight();
+            }
+        }
+
 
 
         [WebMethod(EnableSession = true)]
@@ -107,29 +140,6 @@ namespace PokerTraining
         }
 
 
-        protected void btnCall_Click()
-        {
-            if ((bool)Session["userShouldCall"])
-            {
-                UserRight();
-            }
-            else
-            {
-                UserWrong();
-            }
-        }
-
-        protected void btnFold_Click()
-        {
-            if ((bool)Session["userShouldCall"])
-            {
-                UserWrong();
-            }
-            else
-            {
-                UserRight();
-            }
-        }
 
         protected void UserRight()
         {

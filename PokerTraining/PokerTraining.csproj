@@ -129,6 +129,7 @@
     <Content Include="Images\b2pr.png" />
     <Content Include="Images\b2pt.png" />
     <Content Include="jquery-3.1.1.js" />
+    <Content Include="MainStyleSheet.css" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
   </ItemGroup>
@@ -146,6 +147,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UserDecision.cs" />
     <Compile Include="WrongAns.cs" />
   </ItemGroup>
   <ItemGroup>
