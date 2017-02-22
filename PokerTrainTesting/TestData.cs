@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PokerTrainTesting
 {
-    public class TestData
+    public static class TestData
     {
         public static Card AceDiamonds = new Card(Suit.diamonds, Value.ace);
         public static Card AceHearts = new Card(Suit.hearts, Value.ace);

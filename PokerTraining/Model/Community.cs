@@ -37,6 +37,12 @@ namespace PokerTraining
         {
             cardLis.AddRange(c.cardLis);
         }
+        
+
+        public Community(List<Card> cards)
+        {
+            this.Add(cards);
+        }
 
         /// <summary>
         /// Creates the CommunityCards based on the unavailableCards and 

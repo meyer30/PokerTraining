@@ -113,6 +113,14 @@ namespace PokerTraining
             return (double)numSituationsWinning / (double)totSituations;
         }
 
+        public double GetOddsWin(Community commCards, int numOpponents)
+        {
+            if(numOpponents<=1)
+            {
+                return this.GetOddsWin(commCards);
+            }
+            return 0;
+        }
 
         #endregion
 
