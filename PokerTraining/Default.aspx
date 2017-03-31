@@ -12,13 +12,14 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <asp:ScriptManager runat="server" ID="scriptManager1" EnablePageMethods="true">
+            <Scripts>
+                <asp:ScriptReference Path="~/DefaultBehavior.js" />
+            </Scripts>
+        </asp:ScriptManager>
+        <div id="mainDiv">
             <h1>POKER APP</h1>
-            <asp:ScriptManager runat="server" ID="scriptManager1" EnablePageMethods="true">
-                <Scripts>
-                    <asp:ScriptReference Path="~/DefaultBehavior.js" />
-                </Scripts>
-            </asp:ScriptManager>
+
             <br />
             <br />
             <br />
@@ -73,6 +74,9 @@
                 </asp:Table>--%>
             <br />
         </div>
+        <dialog>
+            dialogue box
+        </dialog>
     </form>
 </body>
 </html>

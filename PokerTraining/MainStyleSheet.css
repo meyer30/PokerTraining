@@ -1,7 +1,10 @@
 ﻿body {
-    background-color: aquamarine;
+    background-color: white;
 }
 td {
     text-align:center;
     border: none;
+}
+#mainDiv {
+    background-color: aquamarine;
 }
