@@ -204,9 +204,9 @@ namespace PokerTraining
             {
                 return "Images\\b1fv.png";
             }
-            int cardNum = (12 - (card.GetRank)) * 4;
+            int cardNum = (12 - (card.ZeroBasedRank)) * 4;
 
-            switch (card.GetSuit)
+            switch (card.Suit)
             {
                 case Suit.clubs:
                     cardNum += 1;

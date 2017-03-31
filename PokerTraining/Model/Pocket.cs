@@ -46,12 +46,12 @@ namespace PokerTraining
         public Pocket(List<Card> unavailbCards)
         {
             Card c1 = Card.GetRandom(), c2 = Card.GetRandom();
-            while(c1.IsSame(unavailbCards))
+            while(c1.IsIn(unavailbCards))
             {
                 c1 = Card.GetRandom();
             }
             unavailbCards.Add(c1);
-            while(c2.IsSame(unavailbCards))
+            while(c2.IsIn(unavailbCards))
             {
                 c2 = Card.GetRandom();
             }
@@ -87,8 +87,8 @@ namespace PokerTraining
             List<Card> unavailbCards = new List<Card>(this.cardLis);
             unavailbCards.AddRange(commCards.CardList);
 
-            Card c1 = new Card(Suit.clubs, Value.two);
-            Card c2 = new Card(Suit.diamonds, Value.two);
+            Card c1 = new Card(Suit.clubs, Rank.two);
+            Card c2 = new Card(Suit.diamonds, Rank.two);
             Pocket oppPocket = new Pocket(c1, c2);
 
             while (oppPocket[0] != null)

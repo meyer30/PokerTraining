@@ -54,11 +54,11 @@ namespace PokerTraining
             int rank = -1;
 
             Suit suit;
-            int[] countEachType = GetCountEachType(cardLis);
+            int[] countEachType = GetCountOfEachRank(cardLis);
 
             if (HasFlush(cardLis, out suit))
             {
-                countEachType = GetCountEachType(GetSuitedCards(cardLis, suit));
+                countEachType = GetCountOfEachRank(GetSuitedCards(cardLis, suit));
 
                 if (HasStraight(countEachType, out rank))
                 {
@@ -210,7 +210,7 @@ namespace PokerTraining
 
             for (int idx = 0; idx < cardLis.Count; idx++)
             {
-                suitCount[(int)cardLis[idx].GetSuit]++;
+                suitCount[(int)cardLis[idx].Suit]++;
             }
 
             for (int idx = 0; idx < 4; idx++)
@@ -450,7 +450,7 @@ namespace PokerTraining
         {
             for (int idx = 0; idx < cardLis.Count; )
             {
-                if (cardLis[idx].GetSuit.Equals(selSuit))
+                if (cardLis[idx].Suit.Equals(selSuit))
                 {
                     idx++;
                 }
@@ -462,20 +462,21 @@ namespace PokerTraining
             return cardLis;
         }
 
-        private int[] GetCountEachType(List<Card> cardLis)
+        private int[] GetCountOfEachRank(List<Card> cardLis)
         {
-            int[] countOfEachType = new int[13];
+            int[] countOfEachRank = new int[13];
             for (int idx = 0; idx < 13; idx++)
             {
-                countOfEachType[idx] = 0;
+                countOfEachRank[idx] = 0;
             }
+
             for (int idx = 0; idx < cardLis.Count; idx++)
             {
                 Card c = cardLis[idx];
-                countOfEachType[c.GetRank]++;
+                countOfEachRank[c.ZeroBasedRank]++;
             }
 
-            return countOfEachType;
+            return countOfEachRank;
         }
 
 

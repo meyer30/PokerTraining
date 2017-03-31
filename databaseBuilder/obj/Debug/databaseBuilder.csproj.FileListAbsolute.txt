@@ -1,0 +1,11 @@
+F:\OneDrive\Development\C# projects\PokerTraining\databaseBuilder\bin\Debug\databaseBuilder.exe.config
+F:\OneDrive\Development\C# projects\PokerTraining\databaseBuilder\bin\Debug\databaseBuilder.exe
+F:\OneDrive\Development\C# projects\PokerTraining\databaseBuilder\bin\Debug\databaseBuilder.pdb
+F:\OneDrive\Development\C# projects\PokerTraining\databaseBuilder\bin\Debug\PokerTraining.dll
+F:\OneDrive\Development\C# projects\PokerTraining\databaseBuilder\bin\Debug\EntityFramework.dll
+F:\OneDrive\Development\C# projects\PokerTraining\databaseBuilder\bin\Debug\PokerTraining.pdb
+F:\OneDrive\Development\C# projects\PokerTraining\databaseBuilder\bin\Debug\PokerTraining.dll.config
+F:\OneDrive\Development\C# projects\PokerTraining\databaseBuilder\bin\Debug\EntityFramework.xml
+F:\OneDrive\Development\C# projects\PokerTraining\databaseBuilder\obj\Debug\databaseBuilder.csprojResolveAssemblyReference.cache
+F:\OneDrive\Development\C# projects\PokerTraining\databaseBuilder\obj\Debug\databaseBuilder.exe
+F:\OneDrive\Development\C# projects\PokerTraining\databaseBuilder\obj\Debug\databaseBuilder.pdb

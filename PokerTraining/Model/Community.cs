@@ -56,7 +56,7 @@ namespace PokerTraining
             for(int idx=0; idx<numCommCards; idx++)
             {
                 Card c = Card.GetRandom();
-                while(c.IsSame(unavailableCards))
+                while(c.IsIn(unavailableCards))
                 {
                     c = Card.GetRandom();
                 }
@@ -76,11 +76,11 @@ namespace PokerTraining
         public Community First(List<Card> unavailableCards)
         {
             Community community = new Community(this);
-            Card c = new Card(Suit.clubs, Value.two);
+            Card c = new Card(Suit.clubs, Rank.two);
 
             while (community.Count < 5)
             {
-                while (c.IsSame(unavailableCards))
+                while (c.IsIn(unavailableCards))
                 {
                     c = c.Next();
                 }

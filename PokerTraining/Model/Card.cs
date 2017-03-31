@@ -13,7 +13,7 @@ namespace PokerTraining
         spades = 3,
     }
 
-    public enum Value
+    public enum Rank
     {
         two = 2,
         three = 3,
@@ -37,46 +37,71 @@ namespace PokerTraining
     public class Card
     {
         #region Fields and Properties
-        private Suit s;
-        private Value v;
-
-
-        public int GetRank
+        private Suit mySuit;
+        private Rank myRank;
+        
+        public Suit Suit
         {
-            get { return (int)this.v - 2; }
+            get { return this.mySuit; }
         }
 
-        public Suit GetSuit 
-        { 
-            get { return this.s; }
+        public Rank Rank
+        {
+            get { return this.myRank; }
+            set { this.myRank = value; }
+        }
+
+        public int ZeroBasedRank
+        {
+            get { return (int)this.myRank - 2; }
+        }
+
+        /// <summary>
+        /// Used for building database
+        /// </summary>
+        public new String ToString
+        {
+            get { return this.myRank.ToString() + this.mySuit.ToString(); }
         }
         #endregion
 
         #region Constructors
         public Card() { }
         
-        public Card(Suit suit, Value value)
+        public Card(Suit suit, Rank value)
         {
-            this.s = suit;
-            this.v = value;
+            this.mySuit = suit;
+            this.myRank = value;
         }
         #endregion
 
         #region Static Constructors
+
+        public Card Next(List<Card> unavailbCards)
+        {
+            Card nextCard = this.Next();
+            while (nextCard != null && nextCard.IsIn(unavailbCards))
+            {
+                nextCard = nextCard.Next();
+            }
+            return nextCard;
+        }
+
+
         /// <summary>
         /// Sets the card to the next value or suit or null
         /// based on order
         /// </summary>
         internal Card Next()
         {
-            if (this.v != Value.ace)
+            if (this.myRank != PokerTraining.Rank.ace)
             {
-                this.v++;
+                this.myRank++;
             }
-            else if (this.s != Suit.spades)
+            else if (this.mySuit != Suit.spades)
             {
-                this.v = Value.two;
-                this.s++;
+                this.myRank = PokerTraining.Rank.two;
+                this.mySuit++;
             }
             else
             {
@@ -87,46 +112,38 @@ namespace PokerTraining
         }
 
         /// <summary>
-        /// Returns a randomn card in the 52 card deck
-        /// </summary>
-        internal static Card GetRandom()
-        {
-            Random rand = new Random();
-            Suit s = (Suit) rand.Next(0,3);
-            Value v = (Value)rand.Next(2, 14);
-            return new Card(s, v);
-        }
-
-        /// <summary>
         /// Returns a randomn card in the 52 card deck that is also not in cLis
         /// </summary>
         internal static Card GetRandom(List<Card> unavailCards)
         {
             Card c = Card.GetRandom();
-            while (c.IsSame(unavailCards))
+            while (c.IsIn(unavailCards))
             {
                 c = Card.GetRandom();
             }
             return c;
         }
 
-        internal Card Next(List<Card> unavailbCards)
+
+        /// <summary>
+        /// Returns a randomn card in the 52 card deck
+        /// </summary>
+        internal static Card GetRandom()
         {
-            Card nextCard = this.Next();
-            while (nextCard != null && nextCard.IsSame(unavailbCards))
-            {
-                nextCard = nextCard.Next();
-            }
-            return nextCard;
+            Random rand = new Random();
+            Suit s = (Suit) rand.Next(0,3);
+            Rank v = (Rank)rand.Next(2, 14);
+            return new Card(s, v);
         }
+        
 
         /// <summary>
         /// Returns a the first card that is also not in the unavailableCards
         /// </summary>
         internal static Card First(List<Card> unavailableCards)
         {
-            Card firstCard = new Card(Suit.clubs, Value.two);
-            while (firstCard.IsSame(unavailableCards))
+            Card firstCard = new Card(Suit.clubs, PokerTraining.Rank.two);
+            while (firstCard.IsIn(unavailableCards))
             {
                 firstCard = firstCard.Next(unavailableCards);
             }
@@ -135,11 +152,11 @@ namespace PokerTraining
         #endregion
 
         #region Public Functions
-        public bool IsSame(List<Card> unavailbCards)
+        public bool IsIn(List<Card> cardList)
         {
-            foreach (Card c in unavailbCards)
+            foreach (Card curCard in cardList)
             {
-                if (this.IsSame(c))
+                if (this.IsSame(curCard))
                 {
                     return true;
                 }
@@ -148,11 +165,22 @@ namespace PokerTraining
         }
 
         /// <summary>
-        /// Returns true if the given card is the same.
+        /// Returns true if the other card is the same.
         /// </summary>
-        public bool IsSame(Card c)
+        public bool IsSame(Card otherCard)
         {
-            return (this.s == c.s && this.v == c.v);
+            if (this.myRank != otherCard.Rank)
+            {
+                return false;
+            }
+            else if(this.mySuit != otherCard.mySuit)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
         #endregion
     };
