@@ -13,12 +13,6 @@ namespace databaseBuilder
         {
             Console.WriteLine("hello");
 
-            Card pocket1;
-            pocket1 = new Card(Suit.hearts, Rank.ace);
-            Console.WriteLine(pocket1.Rank);
-
-            pocket1.Rank++;
-            Console.WriteLine(pocket1.Rank);
 
             Console.ReadLine();
         }
@@ -93,7 +87,7 @@ namespace databaseBuilder
                 {
                     
                 }
-                flop1 = flop1.Next();
+                flop1 = flop1.Next(unavailableCards);
             }
             
 
