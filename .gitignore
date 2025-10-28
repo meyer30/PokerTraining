@@ -59,3 +59,7 @@ PokerTraining/WebService1.asmx
 .vs/PokerTraining/v14/.suo
 .vs/PokerTraining/v14/.suo
 .vs/PokerTraining/v14/.suo
+/WinFormsApp1/obj
+*.exe
+*.pdb
+/WinFormsApp1/bin
