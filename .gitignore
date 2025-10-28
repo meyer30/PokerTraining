@@ -40,6 +40,10 @@ PokerTrainTesting/bin/
 # Thumbnails
 ._*
 
+bin/
+obj/
+CopilotIndices/
+FileContentIndex/
 # Files that might appear in the root of a volume
 .DocumentRevisions-V100
 .fseventsd
