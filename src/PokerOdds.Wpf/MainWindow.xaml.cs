@@ -49,12 +49,11 @@ namespace PokerOdds.Wpf
 
                 var results = OddsCalculator.GetHitCounts(curCards);
 
-                int totalPossibleCards = 1081;  //47*46/2 because 5 cards are played
+                
+                var probs = OddsCalculator.GetProbablitities(results, Constants.TOTAL_POSSIBLE_CARDS_2_LEFT);
 
-                var probs = OddsCalculator.GetProbablitities(results, totalPossibleCards);
 
-
-                foreach (PokerHand hand in Enum.GetValues<PokerHand>())
+                foreach (ePokerHand hand in Enum.GetValues<ePokerHand>())
                     ResultsBox.Items.Add($"{hand.ToString()} - {probs[hand]:F2}");
             }
         }

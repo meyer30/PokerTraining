@@ -9,7 +9,7 @@ namespace PokerOdds.Core
         {
             HitProbablitities hitProbablitities = new HitProbablitities();
 
-            foreach (PokerHand hand in Enum.GetValues<PokerHand>())
+            foreach (ePokerHand hand in Enum.GetValues<ePokerHand>())
             {
                 hitProbablitities[hand] = (double)counts[hand] / (double)totalNumCards * 100;
             }
@@ -23,53 +23,53 @@ namespace PokerOdds.Core
 
             var remainingCards = CardRepository.Deck.Where(d => !curCards.Contains(d)).ToArray();
 
-            var countEachType = GetCountOfEachRank(curCards);
-
-            int numPossiblities = 0;
+            var countEachRank = GetCountOfEachRank(curCards);
 
             for (int turnCardIdx = 0; turnCardIdx < remainingCards.Length - 1; turnCardIdx++)
             {
                 Card turnCard = remainingCards[turnCardIdx];
 
-                countEachType[turnCard.ZeroBaseRank]++;
+                countEachRank[turnCard.ZeroBaseRank]++;
 
                 for (int riverCardIdx = turnCardIdx + 1; riverCardIdx < remainingCards.Length; riverCardIdx++)
                 {
                     Card riverCard = remainingCards[riverCardIdx];
 
-                    countEachType[riverCard.ZeroBaseRank]++;
+                    countEachRank[riverCard.ZeroBaseRank]++;
+
 
                     if (IsFlush(curCards, turnCard, riverCard))
-                        results[PokerHand.Flush]++;
+                        results[ePokerHand.Flush]++;
 
-                    if (IsStraight(countEachType))
-                        results[PokerHand.Straight]++;
 
-                    if (IsPair(countEachType))
+                    if (IsStraight(countEachRank))
+                        results[ePokerHand.Straight]++;
+
+                    if (IsPair(countEachRank))
                     {
-                        results[PokerHand.Pair]++;
+                        results[ePokerHand.Pair]++;
 
-                        if (IsTwoPair(countEachType))
-                            results[PokerHand.TwoPair]++;
+                        if (IsTwoPair(countEachRank))
+                            results[ePokerHand.TwoPair]++;
 
-                        if (IsFullHouse(countEachType))
+                        if (IsFullHouse(countEachRank))
                         {
-                            results[PokerHand.FullHouse]++;
-                            results[PokerHand.ThreeOfAKind]++;
+                            results[ePokerHand.FullHouse]++;
+                            results[ePokerHand.ThreeOfAKind]++;
                         }
                     }
-                    if (Is3ofAKind(countEachType))
-                        results[PokerHand.ThreeOfAKind]++;
 
-                    if (Is4ofAKind(countEachType))
-                        results[PokerHand.FourOfAKind]++;
+                    if (Is3ofAKind(countEachRank))
+                        results[ePokerHand.ThreeOfAKind]++;
 
-                    countEachType[riverCard.ZeroBaseRank]--;
+                    if (Is4ofAKind(countEachRank))
+                        results[ePokerHand.FourOfAKind]++;
 
-                    numPossiblities++;
+
+                    countEachRank[riverCard.ZeroBaseRank]--;
                 }
 
-                countEachType[turnCard.ZeroBaseRank]--;
+                countEachRank[turnCard.ZeroBaseRank]--;
             }
 
             return results;
@@ -110,10 +110,10 @@ namespace PokerOdds.Core
         }
 
         private static bool IsPair(int[] cntOfEachRank) =>
-            cntOfEachRank.Any(s => s == 2);
+            cntOfEachRank.Any(s => s >= 2);
         
         private static bool Is3ofAKind(int[] cntOfEachRank) => 
-            cntOfEachRank.Any(s => s == 3);
+            cntOfEachRank.Any(s => s >= 3);
 
         private static bool Is4ofAKind(int[] cntOfEachRank) => 
             cntOfEachRank.Any(s => s == 4);      
@@ -122,7 +122,7 @@ namespace PokerOdds.Core
             IsPair(cntOfEachRank) && Is3ofAKind(cntOfEachRank);
 
         private static bool IsTwoPair(int[] cntOfEachRank) => 
-            cntOfEachRank.Where(s => s == 2).Count() >= 2;
+            cntOfEachRank.Where(s => s >= 2).Count() >= 2;
         
 
         /// <summary>
@@ -136,14 +136,11 @@ namespace PokerOdds.Core
         {
             int[] countOfEachRank = new int[13];
 
-            for (int curRank = 0; curRank < 13; curRank++)
+            foreach (Card card in cardLis)
             {
-                countOfEachRank[curRank] = 0;
+                countOfEachRank[card.ZeroBaseRank]++;
             }
-
-            for (int idx = 0; idx < cardLis.Count; idx++)
-                countOfEachRank[(int)cardLis[idx].ZeroBaseRank]++;
-
+            
             return countOfEachRank;
         }
     }

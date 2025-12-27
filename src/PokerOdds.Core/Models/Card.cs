@@ -7,13 +7,13 @@ namespace PokerOdds.Core.Models
     /// </summary>
     public class Card
     {
-        public SuitEnum Suit { get; set; }
-        public RankEnum Rank { get; set; }
+        public eSuit Suit { get; set; }
+        public eRank Rank { get; set; }
         public int ZeroBaseRank => (int)Rank - 2;
 
         public string DisplayName => $"{Rank} of {Suit}";
 
-        public Card(SuitEnum suit, RankEnum value)
+        public Card(eSuit suit, eRank value)
         {
             this.Suit = suit;
             this.Rank = value;

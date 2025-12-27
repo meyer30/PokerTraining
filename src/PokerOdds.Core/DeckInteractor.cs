@@ -6,7 +6,7 @@ namespace PokerOdds.Core
 {
     public class DeckInteractor
     {
-        public static Card GetCard(SuitEnum suit, RankEnum value)
+        public static Card GetCard(eSuit suit, eRank value)
         {
             return Deck.First(c => c.Suit == suit && c.Rank == value);
         }

@@ -2,7 +2,7 @@
 {
     public class Enums
     {
-        public enum PokerHand
+        public enum ePokerHand
         {
             Pair,
             TwoPair,
@@ -13,7 +13,7 @@
             FourOfAKind
         }
 
-        public enum SuitEnum
+        public enum eSuit
         {
             clubs = 0,
             diamonds = 1,
@@ -21,7 +21,7 @@
             spades = 3,
         }
 
-        public enum RankEnum
+        public enum eRank
         {
             two = 2,
             three = 3,

@@ -7,9 +7,9 @@ namespace PokerOdds.Core.Models
     /// </summary>
     public class HitCounts
     {
-        private readonly int[] _counts = new int[Enum.GetValues<PokerHand>().Length];
+        private readonly int[] _counts = new int[Enum.GetValues<ePokerHand>().Length];
 
-        public int this[PokerHand hand]
+        public int this[ePokerHand hand]
         {
             get => _counts[(int)hand];
             set => _counts[(int)hand] = value;
