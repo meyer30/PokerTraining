@@ -14,6 +14,10 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
+# Visual Studio
+src/.vs/
+.vs/
+
 # Object files
 PokerTraining/obj/
 PokerTraining/bin/
@@ -22,7 +26,6 @@ PokerTrainTesting/bin/
 *.obj
 *.dll
 *.cache
-
 # Windows shortcuts
 *.lnk
 
